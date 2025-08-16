@@ -1,0 +1,39 @@
+<section class="space-y-6">
+  <div class="section space-y-6">
+    <div class="flex items-center justify-between">
+      <h2>Примерка</h2>
+      <div class="pill">Шаги: 1 Загрузка → 2 Результат</div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="space-y-3">
+        <div class="field">
+          <label class="font-medium">Фото пользователя</label>
+          <input type="file" id="inputUser" accept="image/*" class="btn" />
+          <input type="url" id="inputUserUrl" placeholder="или вставьте URL" class="btn" />
+          <img id="previewUser" class="thumb" alt="Превью пользователя" />
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="field">
+          <label class="font-medium">Фото прически</label>
+          <input type="file" id="inputHair" accept="image/*" class="btn" />
+          <input type="url" id="inputHairUrl" placeholder="или вставьте URL" class="btn" />
+          <img id="previewHair" class="thumb" alt="Превью прически" />
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button id="btnTryOn" class="btn-primary">Примерить прическу</button>
+      <span class="text-neutral-600">Результат появится ниже</span>
+    </div>
+  </div>
+
+  <div class="section space-y-3">
+    <h3>Результат</h3>
+    <div class="aspect-video card overflow-hidden flex items-center justify-center">
+      <img id="resultImg" class="max-h-[70vh]" alt="Результат примерки" />
+    </div>
+  </div>
+</section>

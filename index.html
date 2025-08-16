@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HairTryOn — Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        container: { center: true, padding: '1rem' }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      html { @apply antialiased; }
+      h1 { @apply text-2xl md:text-3xl font-semibold tracking-tight; }
+      h2 { @apply text-xl md:text-2xl font-semibold tracking-tight; }
+      h3 { @apply text-lg font-semibold; }
+    }
+    @layer components {
+      .card { @apply bg-white/70 backdrop-blur border border-black/10 shadow-sm rounded-2xl; }
+      .section { @apply card p-4 md:p-6; }
+      .btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 border border-black/10 shadow-sm transition active:scale-[0.98] hover:shadow md:hover:-translate-y-[1px]; }
+      .btn-primary { @apply btn; }
+      .toolbar { @apply flex items-center gap-2; }
+      .field { @apply flex flex-col gap-2; }
+      .thumb { @apply w-full aspect-square object-cover rounded-xl border border-black/10; }
+      .skeleton { @apply animate-pulse bg-black/10 rounded-xl; }
+      .pill { @apply inline-flex items-center gap-2 border border-black/10 rounded-full px-3 py-1 text-sm; }
+      .grid-auto { @apply grid gap-3 sm:grid-cols-2 lg:grid-cols-3; }
+      .divider { @apply h-px bg-black/10 my-4; }
+    }
+    @layer utilities {
+      .safe-top { padding-top: env(safe-area-inset-top); }
+      .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-neutral-50 text-neutral-900 flex flex-col">
+  <!-- Sticky, translucent header -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-black/10 safe-top">
+    <div class="container h-14 flex items-center justify-between">
+      <a href="#/home" class="font-medium">HairTryOn</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a class="hover:underline" href="#/home">Главная</a>
+        <a class="hover:underline" href="#/try-on">Примерка</a>
+        <a class="hover:underline" href="#/history">История</a>
+        <a class="hover:underline" href="#/profile">Профиль</a>
+      </nav>
+      <div id="authArea" class="toolbar"></div>
+    </div>
+  </header>
+
+  <!-- Mobile bottom tabbar -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/90 backdrop-blur border-t border-black/10 safe-bottom">
+    <div class="container h-14 grid grid-cols-4 text-xs">
+      <a href="#/home" class="flex items-center justify-center">Главная</a>
+      <a href="#/try-on" class="flex items-center justify-center">Примерка</a>
+      <a href="#/history" class="flex items-center justify-center">История</a>
+      <a href="#/profile" class="flex items-center justify-center">Профиль</a>
+    </div>
+  </nav>
+
+  <!-- Loader -->
+  <div id="loader" class="fixed inset-0 hidden items-center justify-center bg-black/5 backdrop-blur-sm">
+    <div class="skeleton w-40 h-10"></div>
+  </div>
+
+  <!-- Content -->
+  <main class="flex-1">
+    <div class="container py-6 md:py-10" id="view"></div>
+  </main>
+
+  <footer class="mt-auto border-t border-black/10 bg-white/70 backdrop-blur">
+    <div class="container py-4 text-sm flex items-center justify-between">
+      <span>© HairTryOn</span>
+      <a href="#/home" class="hover:underline">О сервисе</a>
+    </div>
+  </footer>
+
+  <script src="./js/auth.js"></script>
+  <script src="./js/history.js"></script>
+  <script src="./js/profile.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
